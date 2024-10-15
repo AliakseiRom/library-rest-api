@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: library-rest-api
+  datasource:
+    url: "${DATASOURCE_URL}"
+    username: "${DATASOURCE_USERNAME}"
+    password: "${DATASOURCE_PASSWORD}"
+
+  jpa:
+    hibernate:
+      dialect: "org.hibernate.dialect.PostgreSQLDialect"
+      ddl-auto: update
