@@ -13,7 +13,9 @@ To build and run this project, you will need the following:
 
 * **JDK**: Install Java Develompment Kit 19
 * **Maven**: Install Apache Maven 4.0.0
-* **mvn clean**: Perform mvn clean install
+* **Postgres**: Create database with your postgres user. Use command: `CREATE DATABASE library WITH OWNER postgres`
+* **application.yml**: Set up your credentials to Postgres DB with your username and password
+* **mvn clean install**: Perform mvn clean install
 * **Running project**: Run the Project
 
 ## API Endpoints
@@ -32,8 +34,7 @@ To build and run this project, you will need the following:
   you need to authenticate by
   using **admin** as a username and a password
 * Then you need to put access token
-  in all Book Controller endpoints to
-  authentication field (from bearer token tab, if you are using **Postman**)
+  in all Book Controller endpoints into authorization header: `Authorization: Bearer <access_token>`
 
 ### Book Controller
 * GET `/book/{id}`: Get book by ID

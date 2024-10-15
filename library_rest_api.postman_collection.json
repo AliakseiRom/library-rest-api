@@ -72,7 +72,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/book/11",
+					"raw": "http://localhost:8080/book/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -80,7 +80,7 @@
 					"port": "8080",
 					"path": [
 						"book",
-						"11"
+						"1"
 					]
 				}
 			},
@@ -163,11 +163,23 @@
 		},
 		{
 			"name": "Rent a book by ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:8080/book/rent/11",
+					"raw": "http://localhost:8080/book/rent/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -176,7 +188,7 @@
 					"path": [
 						"book",
 						"rent",
-						"11"
+						"1"
 					]
 				}
 			},
@@ -206,6 +218,16 @@
 		{
 			"name": "Create a new book",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcyODkyMzMyNywiaWF0IjoxNzI4ODg3MzI3fQ.22HNIeieeAeVNbezM1m-hRCUrRDeLPK4NI9goBlxrEU",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -247,7 +269,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/book/update/11",
+					"raw": "http://localhost:8080/book/update/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -256,7 +278,7 @@
 					"path": [
 						"book",
 						"update",
-						"11"
+						"1"
 					]
 				}
 			},
@@ -268,7 +290,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/book/delete/11",
+					"raw": "http://localhost:8080/book/delete/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -277,7 +299,7 @@
 					"path": [
 						"book",
 						"delete",
-						"11"
+						"1"
 					]
 				}
 			},
