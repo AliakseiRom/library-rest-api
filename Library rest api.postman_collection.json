@@ -14,7 +14,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTcyODg3MzgxOCwiaWF0IjoxNzI4ODM3ODE4fQ.Xkc-soVFbPZknAobLe8nv8dTKzC1t4jfEl_J8-nmLkI",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTczNDU5ODQ4MSwiaWF0IjoxNzMyNDM4NDgxfQ.TLQs0ZIITgltmr8TinbLk8pWK9jML-IO2StsdfQJwUk",
 							"type": "string"
 						}
 					]
@@ -23,7 +23,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}\r\n",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -55,7 +55,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3MzM5MDg3MzIsImV4cCI6MTczNDEyNDczMn0.11KlJR8BOZI70AvRgQ8GsvDhalUyoiP2rHTEM0OEhoM",
 							"type": "string"
 						}
 					]
@@ -72,14 +72,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/book/1",
+					"raw": "http://localhost:8080/books/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"book",
+						"books",
 						"1"
 					]
 				}
@@ -97,7 +97,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcyODkyMzMyNywiaWF0IjoxNzI4ODg3MzI3fQ.22HNIeieeAeVNbezM1m-hRCUrRDeLPK4NI9goBlxrEU",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3MzM5MDg3MzIsImV4cCI6MTczNDEyNDczMn0.11KlJR8BOZI70AvRgQ8GsvDhalUyoiP2rHTEM0OEhoM",
 							"type": "string"
 						}
 					]
@@ -114,15 +114,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/book/all",
+					"raw": "http://localhost:8080/books",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"book",
-						"all"
+						"books"
 					]
 				}
 			},
@@ -146,14 +145,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/book/isbn/string",
+					"raw": "http://localhost:8080/books/isbn/string",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"book",
+						"books",
 						"isbn",
 						"string"
 					]
@@ -167,6 +166,16 @@
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3MzM5MzgyMjUsImV4cCI6MTczNDE1NDIyNX0.JoS42xlj7gOh8xA3HTXRL1k-zMkMPRFAtxkwfLaqIyg",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -179,16 +188,16 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/book/rent/1",
+					"raw": "http://localhost:8080/books/rent/2",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"book",
+						"books",
 						"rent",
-						"1"
+						"2"
 					]
 				}
 			},
@@ -197,19 +206,29 @@
 		{
 			"name": "Return a rented book",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3MzM5MzgyMjUsImV4cCI6MTczNDE1NDIyNX0.JoS42xlj7gOh8xA3HTXRL1k-zMkMPRFAtxkwfLaqIyg",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/book/return/11",
+					"raw": "http://localhost:8080/books/return/2",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"book",
+						"books",
 						"return",
-						"11"
+						"2"
 					]
 				}
 			},
@@ -223,7 +242,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcyODkyMzMyNywiaWF0IjoxNzI4ODg3MzI3fQ.22HNIeieeAeVNbezM1m-hRCUrRDeLPK4NI9goBlxrEU",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3MzM4NjM1ODMsImV4cCI6MTczNDA3OTU4M30.o2_L3MwdonRINUXmvtUVAH9X2I1ZShKx__A5woYwScc",
 							"type": "string"
 						}
 					]
@@ -232,7 +251,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"isbn\": \"test_isbn\",\r\n    \"title\": \"test_test\",\r\n    \"author\": \"test_author\",\r\n    \"description\": \"test_description\",\r\n    \"genre\": \"test_genre\",\r\n    \"available\": true\r\n}",
+					"raw": "{\r\n    \"isbn\": \"test_isbn new1\",\r\n    \"title\": \"test_test new1\",\r\n    \"author\": \"test_author new1\",\r\n    \"description\": \"test_description new1\",\r\n    \"genre\": \"test_genre new1\",\r\n    \"available\": true\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -240,15 +259,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/book/create",
+					"raw": "http://localhost:8080/books",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"book",
-						"create"
+						"books"
 					]
 				}
 			},
@@ -257,11 +275,21 @@
 		{
 			"name": "Update book details",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3MzM4NjM1ODMsImV4cCI6MTczNDA3OTU4M30.o2_L3MwdonRINUXmvtUVAH9X2I1ZShKx__A5woYwScc",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"isbn\": \"test_isbn1\",\r\n    \"title\": \"test_test1\",\r\n    \"author\": \"test_author1\",\r\n    \"description\": \"test_description1\",\r\n    \"genre\": \"test_genre1\",\r\n    \"available\": false\r\n}",
+					"raw": "{\r\n    \"isbn\": \"test_isbn1\",\r\n    \"title\": \"test_test1\",\r\n    \"author\": \"test_author1\",\r\n    \"description\": \"test_description1\",\r\n    \"genre\": \"test_genre1\",\r\n    \"available\": true\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -269,15 +297,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/book/update/1",
+					"raw": "http://localhost:8080/books/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"book",
-						"update",
+						"books",
 						"1"
 					]
 				}
@@ -287,19 +314,28 @@
 		{
 			"name": "Delete a book by ID",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiaWF0IjoxNzMzOTM5ODAxLCJleHAiOjE3MzQxNTU4MDF9.YZxc6k8YCTJiYpKzhZbWxnUT4OxDTo72ASXOdk_Q8qg",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/book/delete/1",
+					"raw": "http://localhost:8080/books/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"book",
-						"delete",
-						"1"
+						"books",
+						"3"
 					]
 				}
 			},
@@ -311,16 +347,73 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/book/delete/all",
+					"raw": "http://localhost:8080/books",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"book",
-						"delete",
-						"all"
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get rental info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3MzM5MDg3MzIsImV4cCI6MTczNDEyNDczMn0.11KlJR8BOZI70AvRgQ8GsvDhalUyoiP2rHTEM0OEhoM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/books/rental_info/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"books",
+						"rental_info",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\",\r\n    \"roles\": [\"ROLE_USER\", \"ROLE_ADMIN\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"register"
 					]
 				}
 			},
