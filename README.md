@@ -29,20 +29,24 @@ To build and run this project, you will need the following:
   you should go to `/swagger-ui.html` endpoint
 
 ### Auth Controller
-* POST `/authenticate`: Before calling endpoints from
+* POST `/register`: Before calling authenticate endpoint
+  you need to register by entering username, password
+  and roles that you need, for example `ROLE_ADMIN`
+* POST `/authenticate`: Before calling other endpoints from
   **Book Controller**,
   you need to authenticate by
-  using **admin** as a username and a password
+  using username and password that you used in register endpoint
 * Then you need to put access token
   in all Book Controller endpoints into authorization header: `Authorization: Bearer <access_token>`
 
 ### Book Controller
-* GET `/book/{id}`: Get book by ID
-* GET `/book/all`: Get all books
-* GET `/book/isbn/{isbn}`: Get book by ISBN
-* GET `/book/rent/{id}`: Rent a book by its ID
-* GET `/book/return/{id}`: Return a rented book by its ID
-* POST `/book/create`: Add a new book to the library
-* PUT `/book/update/{id}`: Update an existing book by its ID
-* DELETE `/book/delete/{id}`: Delete a book by its ID
-* DELETE `/book/delete/all`: Delete all books
+* GET `/books/{id}`: Get book by ID
+* GET `/books`: Get all books
+* GET `/books/isbn/{isbn}`: Get book by ISBN
+* GET `/books/rent/{id}`: Rent a book by its ID
+* GET `/books/return/{id}`: Return a rented book by its ID
+* GET `/books/rental_info/{id}`: Get book's rental info by book's id
+* POST `/books`: Add a new book to the library
+* PUT `/books/{id}`: Update an existing book by its ID
+* DELETE `/books/{id}`: Delete a book by its ID
+* DELETE `/books`: Delete all books

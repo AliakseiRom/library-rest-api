@@ -1,12 +1,25 @@
+#logging:
+#  level:
+#    root: "trace"
+#    org:
+#      springframework:
+#        web: "trace"
 spring:
   application:
     name: library-rest-api
   datasource:
-    url: "${DATASOURCE_URL:jdbc:postgresql://localhost:5432/library}"
-    username: "${DATASOURCE_USERNAME:postgres}"
-    password: "${DATASOURCE_PASSWORD:postgres}"
-
+    url: "${DATASOURCE_URL}"
+    username: "${DATASOURCE_USERNAME}"
+    password: "${DATASOURCE_PASSWORD}"
   jpa:
     hibernate:
       dialect: "org.hibernate.dialect.PostgreSQLDialect"
       ddl-auto: update
+  jmx:
+    enabled: true
+server:
+  tomcat:
+    max-http-form-post-size: 2MB
+    max-swallow-size: 2MB
+  netty:
+    connection-timeout: 30000

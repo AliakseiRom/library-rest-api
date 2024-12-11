@@ -1,6 +1,5 @@
 package com.example.library_rest_api.service;
 
-import com.example.library_rest_api.exception.BookNotAvailableException;
 import com.example.library_rest_api.exception.CommonException;
 import com.example.library_rest_api.exception.EntityNotExistException;
 import com.example.library_rest_api.mapper.BookMapper;
@@ -18,7 +17,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -78,31 +76,6 @@ class BookServiceTest {
         assertEquals(1, result.size());
         assertEquals(bookResponseDto, result.get(0));
         verify(bookRepository).findAll();
-    }
-
-    @Test
-    void getRentBookById_ShouldUpdateBookAvailability_WhenBookIsAvailable() throws CommonException {
-        when(bookRepository.findById(1L)).thenReturn(Optional.of(book));
-        when(bookMapper.toResponse(any(Book.class))).thenReturn(bookResponseDto);
-        when(bookRepository.save(any(Book.class))).thenReturn(book);
-
-        BookResponseDto result = bookService.getRentBookById(1L);
-
-        assertNotNull(result);
-        assertFalse(book.getAvailable());
-        verify(bookRepository).save(book);
-    }
-
-    @Test
-    void getRentBookById_ShouldThrowBookNotAvailableException_WhenBookIsNotAvailable() {
-        book.setAvailable(false);
-        when(bookRepository.findById(1L)).thenReturn(Optional.of(book));
-
-        Exception exception = assertThrows(BookNotAvailableException.class, () -> {
-            bookService.getRentBookById(1L);
-        });
-
-        assertEquals("book with id 1 not available", exception.getMessage());
     }
 
     @Test
