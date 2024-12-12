@@ -19,7 +19,7 @@ import java.util.Date;
 public class JwtUtils {
     private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
 
-    @Value("${library.app.jwtSecret}")
+    @Value("${library.app.jwtSecret}=thisisenoughsecurekeyof32byteslength123456789123456789123456789")
     private String jwtSecret;
 
     private Key key;

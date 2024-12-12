@@ -70,8 +70,6 @@ public class WebSecurityConfig extends SecurityConfigurerAdapter<DefaultSecurity
                                              "/swagger-ui/**",
                                              "/v3/api-docs/**",
                                              "/swagger-ui.html").permitAll()
-                            //.requestMatchers("/test/admin").hasRole("ADMIN")
-                            //.requestMatchers("/test/user").hasAnyRole("USER", "ADMIN")
                             .anyRequest().authenticated()
                 );
 
