@@ -86,14 +86,14 @@ class LibraryServiceTest {
     @Test
     void returnBook_shouldReturnBookSuccessfully() throws EntityNotExistException {
         when(bookRepository.findById(1L)).thenReturn(Optional.of(testBook));
-        when(bookRentalInfoRepository.findFirstByBookIdAndReturnAtAfter(eq(1L), any(LocalDate.class)))
+        when(bookRentalInfoRepository.findFirstByBookId(eq(1L)))
                 .thenReturn(Optional.of(testRentalInfo));
 
         libraryService.returnBook(1L);
 
         assertTrue(testBook.getAvailable());
         verify(bookRepository, times(1)).findById(1L);
-        verify(bookRentalInfoRepository, times(1)).findFirstByBookIdAndReturnAtAfter(eq(1L), any(LocalDate.class));
+        verify(bookRentalInfoRepository, times(1)).findFirstByBookId(eq(1L));
         verify(bookRentalInfoRepository, times(1)).delete(testRentalInfo);
     }
 
@@ -110,14 +110,14 @@ class LibraryServiceTest {
     @Test
     void returnBook_shouldThrowExceptionIfNoActiveRentalFound() {
         when(bookRepository.findById(1L)).thenReturn(Optional.of(testBook));
-        when(bookRentalInfoRepository.findFirstByBookIdAndReturnAtAfter(eq(1L), any(LocalDate.class)))
+        when(bookRentalInfoRepository.findFirstByBookId(eq(1L)))
                 .thenReturn(Optional.empty());
 
         EntityNotExistException exception = assertThrows(EntityNotExistException.class, () -> libraryService.returnBook(1L));
 
         assertEquals("No active rental found for book with id 1", exception.getMessage());
         verify(bookRepository, times(1)).findById(1L);
-        verify(bookRentalInfoRepository, times(1)).findFirstByBookIdAndReturnAtAfter(eq(1L), any(LocalDate.class));
+        verify(bookRentalInfoRepository, times(1)).findFirstByBookId(eq(1L));
     }
 
     @Test

@@ -12,7 +12,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
-import java.util.Base64;
 import java.util.Date;
 
 @Component
@@ -30,13 +29,8 @@ public class JwtUtils {
         logger.info("JWT Key initialized.");
     }
 
-    private Key key() {
-        return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
-    }
-
     public String generateJwtToken(Authentication authentication) {
         UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
-        logger.info("Key: {}", Base64.getEncoder().encodeToString(key.getEncoded()));
 
         return Jwts.builder()
                 .setSubject(userPrincipal.getUsername())
@@ -47,7 +41,7 @@ public class JwtUtils {
     }
 
     public String getUsernameFromToken(String token) {
-        return Jwts.parser().setSigningKey(key).setAllowedClockSkewSeconds(60).build()
+         return Jwts.parser().setSigningKey(key).setAllowedClockSkewSeconds(60).build()
                 .parseClaimsJws(token).getBody().getSubject();
     }
 

@@ -23,7 +23,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+					"raw": "{\r\n    \"username\": \"admin3\",\r\n    \"password\": \"admin\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -55,7 +55,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3MzM5MDg3MzIsImV4cCI6MTczNDEyNDczMn0.11KlJR8BOZI70AvRgQ8GsvDhalUyoiP2rHTEM0OEhoM",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3MzQ3NTk2MDQsImV4cCI6MTczNDk3NTYwNH0.g6kGE44GLXuS38h9IEsUOx2HTw2GXbdnmSTRlnJLe2I",
 							"type": "string"
 						}
 					]
@@ -97,7 +97,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3MzM5MDg3MzIsImV4cCI6MTczNDEyNDczMn0.11KlJR8BOZI70AvRgQ8GsvDhalUyoiP2rHTEM0OEhoM",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3MzQ5MzM1NzUsImV4cCI6MTczNTE0OTU3NX0.eQ2Eb3COoyUtFL9ObuI38DiHveOB5ZuOGMhjRxxvFag",
 							"type": "string"
 						}
 					]
@@ -171,7 +171,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3MzM5MzgyMjUsImV4cCI6MTczNDE1NDIyNX0.JoS42xlj7gOh8xA3HTXRL1k-zMkMPRFAtxkwfLaqIyg",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3MzQ5MzYzNDIsImV4cCI6MTczNTE1MjM0Mn0.UghgBtCtpdYFUctAemHtsnlm8bkDf8r_52xbMjwt2Y0",
 							"type": "string"
 						}
 					]
@@ -188,7 +188,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/books/rent/2",
+					"raw": "http://localhost:8080/books/rent/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -197,7 +197,7 @@
 					"path": [
 						"books",
 						"rent",
-						"2"
+						"3"
 					]
 				}
 			},
@@ -211,7 +211,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3MzM5MzgyMjUsImV4cCI6MTczNDE1NDIyNX0.JoS42xlj7gOh8xA3HTXRL1k-zMkMPRFAtxkwfLaqIyg",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3MzQ5MzkzNDgsImV4cCI6MTczNTE1NTM0OH0.ku24d9vw7VcWlNRE4e4LbVT0omx3N4I7A6jhTTA6vR0",
 							"type": "string"
 						}
 					]
@@ -242,7 +242,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3MzM4NjM1ODMsImV4cCI6MTczNDA3OTU4M30.o2_L3MwdonRINUXmvtUVAH9X2I1ZShKx__A5woYwScc",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3MzQ2MzkxNjksImV4cCI6MTczNDg1NTE2OX0.p3DzY4G44BLvQ1PnFYrpYBl3OvMUH1ICLvQWD48Hj6Y",
 							"type": "string"
 						}
 					]
@@ -251,7 +251,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"isbn\": \"test_isbn new1\",\r\n    \"title\": \"test_test new1\",\r\n    \"author\": \"test_author new1\",\r\n    \"description\": \"test_description new1\",\r\n    \"genre\": \"test_genre new1\",\r\n    \"available\": true\r\n}",
+					"raw": "{\r\n    \"isbn\": \"test_isbn new2\",\r\n    \"title\": \"test_test new2\",\r\n    \"author\": \"test_author new2\",\r\n    \"description\": \"test_description new2\",\r\n    \"genre\": \"test_genre new2\",\r\n    \"available\": \"true\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -280,7 +280,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3MzM4NjM1ODMsImV4cCI6MTczNDA3OTU4M30.o2_L3MwdonRINUXmvtUVAH9X2I1ZShKx__A5woYwScc",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiB0ZXN0MiIsImlhdCI6MTczNDcwOTEzMSwiZXhwIjoxNzM0OTI1MTMxfQ.3CRxiTaHHAbOYRfokKlBUFLYENFCQgek07d-Unggepc",
 							"type": "string"
 						}
 					]
@@ -289,7 +289,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"isbn\": \"test_isbn1\",\r\n    \"title\": \"test_test1\",\r\n    \"author\": \"test_author1\",\r\n    \"description\": \"test_description1\",\r\n    \"genre\": \"test_genre1\",\r\n    \"available\": true\r\n}",
+					"raw": "{\r\n    \"isbn\": \"test_isbn test\",\r\n    \"title\": \"test_test new\",\r\n    \"author\": \"test_author new\",\r\n    \"description\": \"test_description new\",\r\n    \"genre\": \"test_genre new\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -297,7 +297,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/books/1",
+					"raw": "http://localhost:8080/books/2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -305,7 +305,7 @@
 					"port": "8080",
 					"path": [
 						"books",
-						"1"
+						"2"
 					]
 				}
 			},
@@ -319,7 +319,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiaWF0IjoxNzMzOTM5ODAxLCJleHAiOjE3MzQxNTU4MDF9.YZxc6k8YCTJiYpKzhZbWxnUT4OxDTo72ASXOdk_Q8qg",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3MzQ2Mzc5MjEsImV4cCI6MTczNDg1MzkyMX0.j7m-v6H1HpKmUe2WRqO3eyBWirSgiC6cXI5OuBM6Z-k",
 							"type": "string"
 						}
 					]
@@ -327,7 +327,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/books/3",
+					"raw": "http://localhost:8080/books/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -335,7 +335,7 @@
 					"port": "8080",
 					"path": [
 						"books",
-						"3"
+						"1"
 					]
 				}
 			},
@@ -398,7 +398,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\",\r\n    \"roles\": [\"ROLE_USER\", \"ROLE_ADMIN\"]\r\n}",
+					"raw": "{\r\n    \"username\": \"admin test4\",\r\n    \"password\": \"admin\",\r\n    \"role\": [\"ROLE_USER\", \"ROLE_ADMIN\"]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

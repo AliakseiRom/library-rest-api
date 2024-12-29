@@ -10,4 +10,8 @@ public record BookRequestDto(
         String description,
         String genre,
         Boolean available
-){}
+){
+    public Boolean getAvailable() {
+        return available;
+    }
+}

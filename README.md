@@ -17,6 +17,7 @@ To build and run this project, you will need the following:
 * **application.yml**: Set up your credentials to Postgres DB with your username and password
 * **mvn clean install**: Perform mvn clean install
 * **Running project**: Run the Project
+* **Initializing Roles**: Roles will automatically be added to the database after running the project
 
 ## API Endpoints
 

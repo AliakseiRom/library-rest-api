@@ -20,6 +20,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 @RestController
@@ -29,18 +30,18 @@ import java.util.concurrent.ExecutionException;
 public class BookController {
 
     @Autowired
-    private BookService bookService;
+    BookService bookService;
 
     @Autowired
-    private LibraryService libraryService;
+    LibraryService libraryService;
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @Operation(summary = "Get book by ID", description = "Retrieve a specific book by its ID from the library.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved the book"),
             @ApiResponse(responseCode = "404", description = "Book not found"),
-            @ApiResponse(responseCode = "401", description = "Not authorized")
+            @ApiResponse(responseCode = "401", description = "Not authorized"),
+            @ApiResponse(responseCode = "403", description = "AccessDenied")
     })
     public ResponseEntity<BookResponseDto> getBookById(@PathVariable Long id) throws CommonException {
         BookResponseDto response = bookService.getBookById(id);
@@ -48,11 +49,11 @@ public class BookController {
     }
 
     @GetMapping
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @Operation(summary = "Get all books", description = "Retrieve all books available in the library.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved all books"),
-            @ApiResponse(responseCode = "401", description = "Not authorized")
+            @ApiResponse(responseCode = "401", description = "Not authorized"),
+            @ApiResponse(responseCode = "403", description = "AccessDenied")
     })
     public ResponseEntity<List<BookResponseDto>> getAllBooks() {
         List<BookResponseDto> response = bookService.getAllBooks();
@@ -60,12 +61,12 @@ public class BookController {
     }
 
     @GetMapping("/isbn/{isbn}")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @Operation(summary = "Get book by ISBN", description = "Retrieve a book from the library by its ISBN number.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved the book by ISBN"),
             @ApiResponse(responseCode = "404", description = "Book not found by ISBN"),
-            @ApiResponse(responseCode = "401", description = "Not authorized")
+            @ApiResponse(responseCode = "401", description = "Not authorized"),
+            @ApiResponse(responseCode = "403", description = "AccessDenied")
     })
     public ResponseEntity<BookResponseDto> getBookByIsbn(@PathVariable String isbn) throws CommonException {
         BookResponseDto response = bookService.getBookByIsbn(isbn);
@@ -73,34 +74,33 @@ public class BookController {
     }
 
     @GetMapping("/rent/{id}")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @Operation(summary = "Rent a book by ID", description = "Rent a specific book by its ID. Marks the book as unavailable.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Book successfully rented"),
             @ApiResponse(responseCode = "404", description = "Book not found"),
             @ApiResponse(responseCode = "400", description = "Book is not available for rent"),
-            @ApiResponse(responseCode = "401", description = "Not authorized")
+            @ApiResponse(responseCode = "401", description = "Not authorized"),
+            @ApiResponse(responseCode = "403", description = "AccessDenied")
     })
     public ResponseEntity<String> getRentBookById(@PathVariable Long id) throws CommonException {
-        libraryService.rentBook(id);
+        CompletableFuture.allOf(libraryService.rentBook(id)).join();
         return new ResponseEntity<>("Book rented successfully", HttpStatus.OK);
     }
 
     @GetMapping("/return/{id}")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @Operation(summary = "Return a rented book", description = "Return a previously rented book by its ID, marking it as available again.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Book successfully returned"),
             @ApiResponse(responseCode = "404", description = "Book not found"),
-            @ApiResponse(responseCode = "401", description = "Not authorized")
+            @ApiResponse(responseCode = "401", description = "Not authorized"),
+            @ApiResponse(responseCode = "403", description = "AccessDenied")
     })
     public ResponseEntity<String> returnBookById(@PathVariable Long id) throws CommonException, ExecutionException, InterruptedException {
-        libraryService.returnBook(id);
+        CompletableFuture.allOf(libraryService.returnBook(id)).join();
         return new ResponseEntity<>("Book returned successfully", HttpStatus.OK);
     }
 
     @GetMapping("/rental_info/{id}")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @Operation(
             summary = "Get book rental information", description = "Retrieves a list of rental information for a specific book identified by its ID."
     )
@@ -108,6 +108,7 @@ public class BookController {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved rental information"),
             @ApiResponse(responseCode = "401", description = "Not authorized"),
             @ApiResponse(responseCode = "404", description = "Book not found"),
+            @ApiResponse(responseCode = "403", description = "AccessDenied")
     })
     public ResponseEntity<List<BookRentalInfo>> getRentalInfo(@PathVariable Long id) throws CommonException {
         List<BookRentalInfo> bookRentalInfo = libraryService.getBookRentalInfo(id);
@@ -115,11 +116,11 @@ public class BookController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Create a new book", description = "Add a new book to the library collection.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Book successfully created"),
-            @ApiResponse(responseCode = "401", description = "Not authorized")
+            @ApiResponse(responseCode = "401", description = "Not authorized"),
+            @ApiResponse(responseCode = "403", description = "AccessDenied")
     })
     public ResponseEntity<BookResponseDto> createBook(@RequestBody
                                                       @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(examples = {
@@ -142,12 +143,12 @@ public class BookController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Update book details", description = "Update the details of an existing book by its ID.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Book successfully updated"),
             @ApiResponse(responseCode = "404", description = "Book not found"),
-            @ApiResponse(responseCode = "401", description = "Not authorized")
+            @ApiResponse(responseCode = "401", description = "Not authorized"),
+            @ApiResponse(responseCode = "403", description = "AccessDenied")
     })
     public ResponseEntity<BookResponseDto> updateBook(@RequestBody
                                                       @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(examples = {
@@ -159,8 +160,7 @@ public class BookController {
                                                                                 "title": "test_test1",
                                                                                 "author": "test_author1",
                                                                                 "description": "test_description1",
-                                                                                "genre": "test_genre1",
-                                                                                "available": false
+                                                                                "genre": "test_genre1"
                                                                               }"""
                                                               )
                                                       }))
@@ -170,12 +170,12 @@ public class BookController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Delete a book by ID", description = "Remove a book from the library collection by its ID.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Book successfully deleted"),
             @ApiResponse(responseCode = "404", description = "Book not found"),
-            @ApiResponse(responseCode = "401", description = "Not authorized")
+            @ApiResponse(responseCode = "401", description = "Not authorized"),
+            @ApiResponse(responseCode = "403", description = "AccessDenied")
     })
     public ResponseEntity<Void> deleteBookById(@PathVariable Long id) throws CommonException {
         bookService.deleteBook(id);
@@ -183,11 +183,11 @@ public class BookController {
     }
 
     @DeleteMapping
-    @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Delete all books", description = "Remove all books from the library collection.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "All books successfully deleted"),
-            @ApiResponse(responseCode = "401", description = "Not authorized")
+            @ApiResponse(responseCode = "401", description = "Not authorized"),
+            @ApiResponse(responseCode = "403", description = "AccessDenied")
     })
     public ResponseEntity<Void> deleteAllBooks() {
         bookService.deleteAllBooks();

@@ -20,5 +20,6 @@ public interface BookMapper {
 
 
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "available", expression = "java(bookDto.getAvailable() != null ? bookDto.getAvailable() : true)")
     Book toEntity(BookRequestDto bookDto);
 }

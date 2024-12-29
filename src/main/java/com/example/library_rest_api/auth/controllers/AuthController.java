@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     @Autowired
-    private AuthService authService;
+    AuthService authService;
 
     @PostMapping("/authenticate")
     @Operation(summary = "Authenticate user", description = "Authenticate a user by username and password, and return a JWT token.")
@@ -34,7 +34,8 @@ public class AuthController {
             @ApiResponse(responseCode = "401", description = "Unauthorized - Invalid credentials",
                     content = @Content),
             @ApiResponse(responseCode = "400", description = "Bad Request - Invalid input data",
-                    content = @Content)
+                    content = @Content),
+            @ApiResponse(responseCode = "403", description = "AccessDenied")
     })
     public ResponseEntity<JwtResponse> authenticateUser(@RequestBody
                                                             @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(examples = {
@@ -61,7 +62,8 @@ public class AuthController {
             @ApiResponse(responseCode = "400", description = "Bad Request - Invalid input data",
                     content = @Content),
             @ApiResponse(responseCode = "409", description = "Conflict - User already exists",
-                    content = @Content)
+                    content = @Content),
+            @ApiResponse(responseCode = "403", description = "AccessDenied")
     })
     public ResponseEntity<MessageResponse> registerUser(@RequestBody
                                                             @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(examples = {
@@ -71,7 +73,7 @@ public class AuthController {
                                                                                     {
                                                                                       "username": "newuser",
                                                                                       "password": "password123",
-                                                                                      "roles": ["ROLE_USER", "ROLE_ADMIN"]
+                                                                                      "role": ["ROLE_USER", "ROLE_ADMIN"]
                                                                                     }"""
                                                                     )
                                                             }))SignupRequest signupRequest) {
